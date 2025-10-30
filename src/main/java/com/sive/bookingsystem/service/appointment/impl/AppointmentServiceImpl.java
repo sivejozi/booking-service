@@ -46,6 +46,8 @@ public class AppointmentServiceImpl implements AppointmentService {
         AppointmentModel model = convertDTOToEntity(dto);
         model.setCreatedAt(LocalDateTime.now());
         model.setUpdatedAt(LocalDateTime.now());
+        model.setStatus(AppointmentStatus.SCHEDULED);
+        model.setConfirmationCode(UUID.randomUUID().toString());
 
         AppointmentModel saved = appointmentRepository.save(model);
         logger.info("Added Appointment: {}", saved);
