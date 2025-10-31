@@ -71,7 +71,7 @@ public class AppointmentController {
     }
 
     // Needs auth + admin
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<AppointmentDTO> update(
             @PathVariable Long id,
             @RequestBody AppointmentDTO appointmentDTO,

@@ -48,6 +48,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         model.setUpdatedAt(LocalDateTime.now());
         model.setStatus(AppointmentStatus.SCHEDULED);
         model.setConfirmationCode(UUID.randomUUID().toString());
+        model.setAppointmentDateTime(dto.getAppointmentDateTime());
 
         AppointmentModel saved = appointmentRepository.save(model);
         logger.info("Added Appointment: {}", saved);
@@ -81,6 +82,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         existing.setReason(dto.getReason());
         existing.setConfirmationCode(dto.getConfirmationCode());
         existing.setUpdatedAt(LocalDateTime.now());
+        existing.setStatus(AppointmentStatus.valueOf(dto.getStatus()));
 
         if (dto.getStatus() != null) {
             try {
